@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.min.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="header">
+            <img src="{{ url_for('static', filename='img/' + ('male.png' if user.gender=='Male' else 'female.png')) }}" class="avatar">
+            <h2>{{ user.name }} | Age: {{ user.age }}</h2>
+            <p>Doctor: {{ user.doctor }}</p>
+        </div>
+
+        <div class="charts">
+            <canvas id="accChart"></canvas>
+            <canvas id="gyroChart"></canvas>
+            <canvas id="fftChart"></canvas>
+        </div>
+
+        <div class="alert-box" id="alertBox">
+    Status: Waiting for data...
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
